@@ -116,7 +116,6 @@ def create_app(test_config=None):
 			})
 
 		except Exception as e:
-			print(e)
 			abort(422)
 
 	'''
@@ -234,30 +233,34 @@ def create_app(test_config=None):
 	def play():
 		body = request.get_json()
 
-		try:
-			previous_questions = body.get('previous_questions', None)
-			quiz_category = body.get('quiz_category', None)
+		previous_questions = body.get('previous_questions', None)
+		quiz_category = body.get('quiz_category', None)
 
-			if quiz_category['id'] == 0:
-				questions = Question.query.all()
-			else:
-				questions = Question.query.filter(
-					Question.category == quiz_category['id']
-				).all()
-			
-			questions = list(filter(lambda x: x.id not in previous_questions, questions))
+		category_ids = [0] + [c.id for c in Category.query.all()]
+		if int(quiz_category['id']) not in category_ids:
+			abort(404)
 
-			if questions:
-				question = random.choice(questions).format()
-			else:
-				question = False
+		if quiz_category['id'] == 0:
+			questions = Question.query.all()
+		else:
+			questions = Question.query.filter(
+				Question.category == quiz_category['id']
+			).all()
 
-			return jsonify({
-				"success": True,
-				"question": question
-			})
-		except:
-			abort(400)
+		previous_question_ids = [pq['id'] for pq in previous_questions]
+		questions = list(
+			filter(lambda x: x.id not in previous_question_ids, questions)
+		)
+
+		if questions:
+			question = random.choice(questions).format()
+		else:
+			question = False
+
+		return jsonify({
+			"success": True,
+			"question": question
+		})
 
 
 	'''

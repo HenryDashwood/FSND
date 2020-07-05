@@ -72,9 +72,12 @@ This README is missing documentation of your endpoints. Below is an example for 
 
 Endpoints
 GET '/categories'
-GET ...
-POST ...
-DELETE ...
+GET '/categories/<int:category>/questions'
+GET '/questions'
+POST '/questions'
+POST '/questions/search'
+POST '/quizzes'
+DELETE '/questions/<int:question_id>'
 
 GET '/categories'
 - Fetches a dictionary of categories in which the keys are the ids and the value is the corresponding string of the category
@@ -87,6 +90,88 @@ GET '/categories'
 '5' : "Entertainment",
 '6' : "Sports"}
 
+GET '/categories/<int:category>/questions'
+- Fetches a dictionary of questions filtered by category. Results are paginated into groups of 10.
+- Request Arguments: category id
+- Returns: An object whose keys are categories, current_category, questions, success total_questions. e.g.
+{
+  "categories": {
+    "1": "Science",
+    "2": "Art",
+    "3": "Geography",
+    "4": "History",
+    "5": "Entertainment",
+    "6": "Sports"
+  },
+  "current_category": "Science",
+  "questions": [
+    {
+      "answer": "The Liver",
+      "category": 1,
+      "difficulty": 4,
+      "id": 20,
+      "question": "What is the heaviest organ in the human body?"
+    },
+    {
+      "answer": "Alexander Fleming",
+      "category": 1,
+      "difficulty": 3,
+      "id": 21,
+      "question": "Who discovered penicillin?"
+    },
+    {
+      "answer": "Blood",
+      "category": 1,
+      "difficulty": 4,
+      "id": 22,
+      "question": "Hematology is a branch of medicine involving the study of what?"
+    },
+    {
+      "answer": "henry",
+      "category": 1,
+      "difficulty": 1,
+      "id": 24,
+      "question": "what is my name"
+    }
+  ],
+  "success": true,
+  "total_questions": 20
+}
+
+GET '/questions'
+- Fetches a dictionary of questions as above, but unfiltered by category.
+- Request Arguments: category id
+- Returns: An object whose keys are categories, current_category, questions, success, total_questions.
+
+POST '/questions'
+- Creates a new question
+- Request Arguments: None
+- Returns: An object whose keys are success, created (id), questions, total_questions.
+
+POST '/questions/search'
+- Fetches a dictionary of questions that are a superstring of the search term. Results are paginated into groups of 10.
+- Request Arguments: None
+- Returns: An object whose keys are success, questions, total_questions, current_category (None), categories
+
+POST '/quizzes'
+- Returns a random question that has not yet been asked and is in the current category
+- Request Arguments: None
+- Returns: An object whose keys are success, question e.g.
+{
+  "question": {
+    "answer": "The Liver",
+    "category": 1,
+    "difficulty": 4,
+    "id": 20,
+    "question": "What is the heaviest organ in the human body?"
+  },
+  "success": true
+}
+
+DELETE '/questions/<int:question_id>'
+- Deletes a question
+- Request Arguments: question id
+- Returns: An object whose keys are success, deleted, questions, total_questions
 ```
 
 
