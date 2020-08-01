@@ -354,7 +354,7 @@
 				"bearer": [
 					{
 						"key": "token",
-						"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IlBRdXhQWS1yRHA2QnAtTXQwaUJzayJ9.eyJpc3MiOiJodHRwczovL2hjbmRjb2ZmZWVzaG9wLmV1LmF1dGgwLmNvbS8iLCJzdWIiOiJhdXRoMHw1ZjI1NTJhMjE5ODY3YTAwMzcyZDdjYWIiLCJhdWQiOiJjb2ZmZWUiLCJpYXQiOjE1OTYyODMwOTIsImV4cCI6MTU5NjI5MDI5MiwiYXpwIjoiMDRnR1VnRWNVTk04VWNBaEYxWjd4SU5NcThGUnZFQ08iLCJzY29wZSI6IiIsInBlcm1pc3Npb25zIjpbImdldDpkcmlua3MtZGV0YWlsIl19.FvpKgQgjk0DraA8RjVK_Qc2zqLrSC_t-vroaUcEYTlNP9YKDBr22JrctC0oy0KXhdDyMn-pC4I7jbclIXGVxI-jqvTT16DyQWILz6grIqJMD4dRv2rabHQv8fO9Sclx6QXzO7NRuhatVpPVJnQt52NODrf3URZQgv-pEpava5sAglXvtPVkA-Ai0HPyrSZb3BNy8Tt6-jBQjblQbtrq5NB2UzY_SgryLbJBlSKws4n2pugnubl7nSI0P8uLNHp4IcXA-IFsacqOcRewByOKMQEZU4Iu5jgqSqNaluUj4ac_3OF6WE5OqiXMAEK4laNPFF3T2zhVmwkI_IjUnQ5AYMw",
+						"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IlBRdXhQWS1yRHA2QnAtTXQwaUJzayJ9.eyJpc3MiOiJodHRwczovL2hjbmRjb2ZmZWVzaG9wLmV1LmF1dGgwLmNvbS8iLCJzdWIiOiJhdXRoMHw1ZjI1NTJhMjE5ODY3YTAwMzcyZDdjYWIiLCJhdWQiOiJjb2ZmZWUiLCJpYXQiOjE1OTYzMTc1NzUsImV4cCI6MTU5NjMyNDc3NSwiYXpwIjoiMDRnR1VnRWNVTk04VWNBaEYxWjd4SU5NcThGUnZFQ08iLCJzY29wZSI6IiIsInBlcm1pc3Npb25zIjpbImdldDpkcmlua3MtZGV0YWlsIl19.BwhjgeYLRotSlbdtW90MURDLdJHDyVfWCCzGo34t9fB5ZlcQvQcMtHN7hqEvDf9NXI22wvw6XXNQoEBq17X2OR2N1a_pAhMpw8I86IILGnha-1WjunU00tF_7WZlx5iYa2dzC-7cLvwMJGD1CzpINPBadP1rb4SynaDy4eEmOw1jZUuzqa8kfpvbg_j8fr0PVdEAuxW4QdhwaiPxVw1QKTqo39Tg-mbIrBKk94ab2AoYwtGrhfv48uMTfd8zUrf1gFGiWJuCs1OapM8XKENL7AltTeZO9LrjmSjLgwhx7JBstHfUK3LjmAAynpqQTK8jn_n4mLHeccpeLbYWptQw8w",
 						"type": "string"
 					}
 				]
@@ -586,7 +586,7 @@
 				"bearer": [
 					{
 						"key": "token",
-						"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IlBRdXhQWS1yRHA2QnAtTXQwaUJzayJ9.eyJpc3MiOiJodHRwczovL2hjbmRjb2ZmZWVzaG9wLmV1LmF1dGgwLmNvbS8iLCJzdWIiOiJhdXRoMHw1ZjI1NGI3MzE5ODY3YTAwMzcyZDc5NDEiLCJhdWQiOiJjb2ZmZWUiLCJpYXQiOjE1OTYyODEzNTIsImV4cCI6MTU5NjI4ODU1MiwiYXpwIjoiMDRnR1VnRWNVTk04VWNBaEYxWjd4SU5NcThGUnZFQ08iLCJzY29wZSI6IiIsInBlcm1pc3Npb25zIjpbImRlbGV0ZTpkcmlua3MiLCJnZXQ6ZHJpbmtzLWRldGFpbCIsInBhdGNoOmRyaW5rcyIsInBvc3Q6ZHJpbmtzIl19.jh62Sr2XvPchwdwL0lkgpKU4Sg7it9XjR3IrbtXpv5tRJucNSrd16e0qxlJUQX-tb9BWLQWlsGlJXZ7nl6yFs5pEZFXDSBVM38O50LClomwZAs1liVZgBk299uC2RUPjYtsIzXoI9I0DibMopdKuWXcBGbcc3pgD79vuhoqZLmXwKFf2hVBEk0ZR1uzHlcdhofsL9ivRJknLsVOptuf26gM5Q_V5R5fjqmm06TZ4SNeGNE3v_immwX-44RqU1nyI-jhCNyIyemMI8wN8uJ9F95SGfNIAkL5uwdIrXRF5Z1mOAO_rZoAId7obWlnUhxfhj8iKPZn0kYvOAs1nORQy2w",
+						"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IlBRdXhQWS1yRHA2QnAtTXQwaUJzayJ9.eyJpc3MiOiJodHRwczovL2hjbmRjb2ZmZWVzaG9wLmV1LmF1dGgwLmNvbS8iLCJzdWIiOiJhdXRoMHw1ZjI1NGI3MzE5ODY3YTAwMzcyZDc5NDEiLCJhdWQiOiJjb2ZmZWUiLCJpYXQiOjE1OTYzMTc0MTAsImV4cCI6MTU5NjMyNDYxMCwiYXpwIjoiMDRnR1VnRWNVTk04VWNBaEYxWjd4SU5NcThGUnZFQ08iLCJzY29wZSI6IiIsInBlcm1pc3Npb25zIjpbImRlbGV0ZTpkcmlua3MiLCJnZXQ6ZHJpbmtzLWRldGFpbCIsInBhdGNoOmRyaW5rcyIsInBvc3Q6ZHJpbmtzIl19.LcpkzzE3V4DR9S74D1V0CzmWri9EXwhJH5PYu18pCMDOsAudxRmCRoKk-eDTRbuzvCInJ2KXBqmvn2N70mqOotvhhazjqd1kXPF1RXZxkUdsSViyL9NqWMz47bsktLhhfm7cF6T99eOdjJMEVKLMhOOSbr7G1ttnwUGnL64o7reh3dEeVIslycmwIFBeFiYG4zhutNoVsQf4rKRFC9ie2xkp5rdxV2_gapZs5H3jNvKPhmRT9uMVdPF5b2vfI1fb0zW-PGz-nD4muSyNnQrtxw9zSjxNAGmwlz70IHaW7wmjY0y-ttqBAeoWFdrRaaTfslOgCdZDcV-mhMArE6RXTw",
 						"type": "string"
 					}
 				]
@@ -640,10 +640,9 @@
 	],
 	"variable": [
 		{
-			"id": "7da0fa13-ecd9-4d7d-8e38-fde2c81cfdaf",
+			"id": "cb98bff1-4f11-4acf-bf8e-4080be94ca4b",
 			"key": "host",
-			"value": "localhost:5000",
-			"type": "string"
+			"value": "127.0.0.1:5000"
 		}
 	],
 	"protocolProfileBehavior": {}
