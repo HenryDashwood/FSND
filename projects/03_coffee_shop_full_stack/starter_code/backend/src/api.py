@@ -42,15 +42,18 @@ def drinks():
     GET /drinks-detail
         it should require the 'get:drinks-detail' permission
         it should contain the drink.long() data representation
-    returns status code 200 and json {"success": True, "drinks": drinks} where drinks is the list of drinks
-        or appropriate status code indicating reason for failure
+    returns status code 200 and json {"success": True, "drinks": drinks} where drinks 
+    is the list of drinks or appropriate status code indicating reason for failure
 '''
 @app.route('/drinks-detail', methods=['GET'])
 @requires_auth('get:drinks-detail')
-def drinks_detail():
-    drinks = Drink.query.all()
-    drinks = [drink.long() for drink in drinks]
-    return {'success': True, 'drinks': drinks}, 200
+def drinks_detail(payload):
+    try:
+        drinks = Drink.query.all()
+        drinks = [drink.long() for drink in drinks]
+        return {'success': True, 'drinks': drinks}, 200
+    except:
+        abort(404)
 
 
 '''
@@ -59,9 +62,17 @@ def drinks_detail():
         it should create a new row in the drinks table
         it should require the 'post:drinks' permission
         it should contain the drink.long() data representation
-    returns status code 200 and json {"success": True, "drinks": drink} where drink an array containing only the newly created drink
-        or appropriate status code indicating reason for failure
+    returns status code 200 and json {"success": True, "drinks": drink} where drink an 
+    array containing only the newly created drink or appropriate status code indicating 
+    reason for failure
 '''
+@app.route('/drinks', methods=['POST'])
+@requires_auth('post:drinks')
+def create_drink(payload):
+    body = request.get_json()
+    drink = Drink(title=body['title'], recipe=json.dumps(body['recipe']))
+    drink.insert()
+    return {"success": True, "drinks": drink.long()}, 200
 
 
 '''
@@ -72,9 +83,23 @@ def drinks_detail():
         it should update the corresponding row for <id>
         it should require the 'patch:drinks' permission
         it should contain the drink.long() data representation
-    returns status code 200 and json {"success": True, "drinks": drink} where drink an array containing only the updated drink
-        or appropriate status code indicating reason for failure
+    returns status code 200 and json {"success": True, "drinks": drink} where drink an 
+    array containing only the updated drink or appropriate status code indicating reason 
+    for failure
 '''
+@app.route('/drinks/<int:id>', methods=['PATCH'])
+@requires_auth('patch:drinks')
+def update_drink(payload, id):
+    body = request.get_json()
+    title = body.get('title', None)
+    recipe = body.get('recipe', None)
+    drink = Drink.query.get(id)
+    if title:
+        drink.title = title
+    if recipe:
+        drink.recipe = recipe
+    drink.update()
+    return {"success": True, "drinks": [drink.long()]}, 200
 
 
 '''
@@ -87,6 +112,13 @@ def drinks_detail():
     returns status code 200 and json {"success": True, "delete": id} where id is the id of the deleted record
         or appropriate status code indicating reason for failure
 '''
+@app.route('/drinks/<int:id>', methods=['DELETE'])
+@requires_auth('delete:drinks')
+def delete_drink(payload, id):
+    body = request.get_json()
+    drink = Drink.query.get(id)
+    drink.delete()
+    return {"success": True, "delete": id}, 200
 
 
 # Error Handling
@@ -95,11 +127,11 @@ Example error handling for unprocessable entity
 '''
 @app.errorhandler(422)
 def unprocessable(error):
-    return jsonify({
+    return {
         "success": False,
         "error": 422,
         "message": "unprocessable"
-    }), 422
+    }, 422
 
 
 '''
@@ -119,14 +151,22 @@ def unprocessable(error):
 '''
 @app.errorhandler(404)
 def unfindable(error):
-    return jsonify({
+    return {
         "success": False,
         "error": 404,
-        "message": "unfindable"
-    }), 404
+        "message": "resource not found"
+    }, 404
 
 
 '''
 @TODO implement error handler for AuthError
     error handler should conform to general task above 
 '''
+@app.errorhandler(AuthError)
+def handle_auth_error(ex):
+    """
+    Receive the raised authorization error and propagates it as response
+    """
+    response = jsonify(ex.error)
+    response.status_code = ex.status_code
+    return response
