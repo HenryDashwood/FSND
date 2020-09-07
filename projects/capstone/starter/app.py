@@ -3,6 +3,9 @@ from flask import Flask, request, abort
 from flask_cors import CORS
 from models import setup_db, Movies, Actors
 from auth import AuthError, requires_auth
+import logging
+log = logging.getLogger(__name__)
+logging.basicConfig(level=logging.INFO)
 
 
 def create_app(test_config=None, test=False):
@@ -35,7 +38,7 @@ def create_app(test_config=None, test=False):
 
     @app.route('/movies', methods=['GET'])
     @requires_auth('get:movies')
-    def get_movies():
+    def get_movies(headers):
         try:
             movies = db.session.query(Movies).all()
             movies = [m.format() for m in movies]
@@ -51,7 +54,7 @@ def create_app(test_config=None, test=False):
 
     @app.route('/actors', methods=['GET'])
     @requires_auth('get:actors')
-    def get_actors():
+    def get_actors(headers):
         try:
             actors = db.session.query(Actors).all()
             actors = [a.format() for a in actors]
@@ -67,7 +70,7 @@ def create_app(test_config=None, test=False):
 
     @app.route('/movies', methods=['POST'])
     @requires_auth('post:movie')
-    def create_movie():
+    def create_movie(headers):
         try:
             payload = request.get_json()
             movie = Movies(
@@ -88,7 +91,7 @@ def create_app(test_config=None, test=False):
 
     @app.route('/actors', methods=['POST'])
     @requires_auth('post:actor')
-    def create_actor():
+    def create_actor(headers):
         try:
             payload = request.get_json()
             actor = Actors(
@@ -110,7 +113,7 @@ def create_app(test_config=None, test=False):
 
     @app.route('/movies/<int:id>', methods=['PATCH'])
     @requires_auth('patch:movie')
-    def update_movie(id):
+    def update_movie(headers, id):
         try:
             payload = request.get_json()
             movie = db.session.query(Movies).get(id)
@@ -129,7 +132,7 @@ def create_app(test_config=None, test=False):
 
     @app.route('/actors/<int:id>', methods=['PATCH'])
     @requires_auth('patch:movie')
-    def update_actor(id):
+    def update_actor(headers, id):
         try:
             payload = request.get_json()
             actor = db.session.query(Actors).get(id)
@@ -149,7 +152,7 @@ def create_app(test_config=None, test=False):
 
     @app.route('/movies/<int:id>', methods=['DELETE'])
     @requires_auth('delete:movie')
-    def delete_movie(id):
+    def delete_movie(headers, id):
         try:
             movie = db.session.query(Movies).filter(
                 Movies.id == id).one_or_none()
@@ -170,7 +173,7 @@ def create_app(test_config=None, test=False):
 
     @app.route('/actors/<int:id>', methods=['DELETE'])
     @requires_auth('delete:actor')
-    def delete_actor(id):
+    def delete_actor(headers, id):
         try:
             payload = request.get_json()
             actor = db.session.query(Actors).filter(
